@@ -17,18 +17,18 @@
       --brown-mid: #8b5a2b; --green: #4a7c59; --green-light: #d4edda;
       --red: #c0392b; --red-light: #fde8e6; --text: #2d1a0e;
       --text-muted: #8b6a4a; --border: #e8d5b5; --shadow: rgba(92,58,30,0.12);
+      --blue: #3a6ea8; --blue-light: #ddeaf7;
     }
     body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); min-height: 100dvh; overflow-x: hidden; }
     body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(ellipse at 20% 10%, rgba(217,124,43,0.07) 0%, transparent 50%), radial-gradient(ellipse at 80% 90%, rgba(92,58,30,0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
     #app { position: relative; z-index: 1; min-height: 100dvh; }
 
-    /* ── LOADING ── */
     #loading-overlay { position: fixed; inset: 0; background: var(--cream); display: flex; align-items: center; justify-content: center; z-index: 500; flex-direction: column; gap: 1rem; }
     .spinner { width: 36px; height: 36px; border: 3px solid var(--border); border-top-color: var(--amber); border-radius: 50%; animation: spin 0.7s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .loading-text { font-family: 'Fraunces', serif; color: var(--brown); font-size: 1rem; }
 
-    /* ── LOGIN ── */
+    /* LOGIN */
     #login-screen { min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; gap: 2rem; }
     .login-header { text-align: center; }
     .login-header h1 { font-family: 'Fraunces', serif; font-size: clamp(2.8rem,8vw,4.5rem); font-weight: 800; color: var(--brown); line-height: 1.05; letter-spacing: -0.02em; }
@@ -46,7 +46,7 @@
     .parent-login-btn { width: 100%; padding: 0.85rem; background: transparent; border: 2px solid var(--brown); border-radius: 12px; color: var(--brown); font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: all 0.18s ease; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
     .parent-login-btn:hover { background: var(--brown); color: white; }
 
-    /* ── SHARED HEADER ── */
+    /* HEADER */
     .app-header { background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 0.9rem 1.25rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px var(--shadow); }
     .app-header .logo { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 800; color: var(--brown); }
     .app-header .logo span { color: var(--amber); font-style: italic; }
@@ -57,18 +57,18 @@
     .logout-btn { background: transparent; border: 1px solid var(--border); border-radius: 8px; padding: 0.4rem 0.75rem; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
     .logout-btn:hover { border-color: var(--brown); color: var(--brown); }
 
-    /* ── MAIN CONTENT ── */
+    /* MAIN */
     .main-content { padding: 1.5rem 1.25rem; max-width: 700px; margin: 0 auto; }
     .week-banner { background: linear-gradient(135deg, var(--brown) 0%, var(--brown-mid) 100%); border-radius: 16px; padding: 1.1rem 1.4rem; color: white; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; }
     .week-banner .week-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.75; margin-bottom: 0.2rem; }
     .week-banner .week-dates { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 600; }
-    .week-banner .progress-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem; }
-    .week-banner .progress-text { font-size: 0.8rem; opacity: 0.85; }
+    .progress-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem; }
+    .progress-text { font-size: 0.8rem; opacity: 0.85; }
     .progress-bar { width: 90px; height: 6px; background: rgba(255,255,255,0.25); border-radius: 100px; overflow: hidden; }
     .progress-fill { height: 100%; background: var(--amber-light); border-radius: 100px; transition: width 0.4s ease; }
     .section-title { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 600; color: var(--brown); margin-bottom: 0.85rem; }
 
-    /* ── CHORE LIST ── */
+    /* CHORE LIST */
     .chore-list { display: flex; flex-direction: column; gap: 0.6rem; }
     .chore-item { background: var(--warm-white); border: 1.5px solid var(--border); border-radius: 14px; padding: 1rem 1.1rem; display: flex; align-items: center; gap: 1rem; transition: all 0.18s ease; cursor: pointer; animation: slideIn 0.2s ease both; }
     .chore-item:hover { border-color: var(--amber); box-shadow: 0 2px 12px var(--shadow); }
@@ -79,28 +79,43 @@
     .chore-item.completed .chore-check { background: var(--green); border-color: var(--green); }
     .chore-info { flex: 1; }
     .chore-name { font-size: 0.95rem; font-weight: 500; color: var(--text); }
+    .chore-freq { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.1rem; }
     .empty-state { text-align: center; padding: 3rem 1rem; color: var(--text-muted); }
     .empty-state .icon { font-size: 3rem; margin-bottom: 0.75rem; }
     .empty-state p { font-size: 0.95rem; }
 
-    /* ── ADMIN TABS ── */
+    /* ADMIN TABS */
     .admin-tabs { display: flex; gap: 0.4rem; background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 0.3rem; margin-bottom: 1.5rem; }
-    .admin-tab { flex: 1; padding: 0.6rem; background: transparent; border: none; border-radius: 9px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; color: var(--text-muted); cursor: pointer; transition: all 0.18s; }
+    .admin-tab { flex: 1; padding: 0.6rem 0.3rem; background: transparent; border: none; border-radius: 9px; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; color: var(--text-muted); cursor: pointer; transition: all 0.18s; }
     .admin-tab.active { background: var(--warm-white); color: var(--brown); box-shadow: 0 1px 6px var(--shadow); }
     .admin-section { display: none; }
     .admin-section.active { display: block; }
-    .item-row { background: var(--warm-white); border: 1px solid var(--border); border-radius: 12px; padding: 0.85rem 1rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
-    .item-row .item-label { font-size: 0.9rem; font-weight: 500; color: var(--text); display: flex; align-items: center; gap: 0.6rem; }
-    .delete-btn { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all 0.15s; flex-shrink: 0; }
-    .delete-btn:hover { background: var(--red-light); border-color: var(--red); color: var(--red); }
-    .add-form { display: flex; gap: 0.6rem; margin-top: 1rem; }
-    .add-input { flex: 1; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; background: var(--warm-white); color: var(--text); outline: none; transition: border-color 0.15s; }
+
+    /* ITEM ROWS */
+    .item-row { background: var(--warm-white); border: 1px solid var(--border); border-radius: 12px; padding: 0.85rem 1rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; gap: 0.5rem; }
+    .item-row .item-label { font-size: 0.9rem; font-weight: 500; color: var(--text); display: flex; align-items: center; gap: 0.6rem; flex: 1; min-width: 0; }
+    .item-row .item-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .item-actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
+    .icon-btn { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.15s; flex-shrink: 0; }
+    .icon-btn:hover { background: var(--amber-pale); border-color: var(--amber); color: var(--brown); }
+    .icon-btn.delete:hover { background: var(--red-light); border-color: var(--red); color: var(--red); }
+
+    /* ADD FORMS */
+    .add-form { display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap; }
+    .add-input { flex: 1; min-width: 140px; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; background: var(--warm-white); color: var(--text); outline: none; transition: border-color 0.15s; }
     .add-input:focus { border-color: var(--amber); }
+    select.add-input { cursor: pointer; }
     .add-btn { padding: 0.75rem 1.1rem; background: var(--amber); border: none; border-radius: 10px; color: white; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
     .add-btn:hover { background: var(--brown-mid); }
     .add-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    /* ── OVERVIEW ── */
+    /* FREQ BADGE */
+    .freq-badge { display: inline-block; font-size: 0.68rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.04em; flex-shrink: 0; }
+    .freq-every { background: var(--amber-pale); color: var(--brown-mid); }
+    .freq-biweekly { background: var(--blue-light); color: var(--blue); }
+    .freq-monthly { background: var(--green-light); color: var(--green); }
+
+    /* OVERVIEW */
     .overview-kid-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 0.85rem; }
     .overview-kid-header { padding: 0.85rem 1rem; display: flex; align-items: center; gap: 0.75rem; border-bottom: 1px solid var(--border); }
     .overview-kid-header .kid-info { flex: 1; }
@@ -108,13 +123,19 @@
     .overview-kid-header .kid-progress-text { font-size: 0.78rem; color: var(--text-muted); }
     .mini-progress-bar { width: 70px; height: 5px; background: var(--border); border-radius: 100px; overflow: hidden; }
     .mini-progress-fill { height: 100%; background: var(--green); border-radius: 100px; }
-    .overview-chore-list { padding: 0.5rem 0.75rem 0.75rem; }
-    .overview-chore-row { display: flex; align-items: center; gap: 0.6rem; padding: 0.35rem 0.25rem; border-bottom: 1px solid var(--cream); font-size: 0.88rem; color: var(--text); }
+    .overview-chore-list { padding: 0.4rem 0.75rem 0.6rem; }
+    .overview-chore-row { display: flex; align-items: center; gap: 0.6rem; padding: 0.4rem 0.25rem; border-bottom: 1px solid var(--cream); font-size: 0.88rem; color: var(--text); }
     .overview-chore-row:last-child { border-bottom: none; }
-    .oc-check { width: 18px; height: 18px; border-radius: 5px; background: var(--green); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.65rem; flex-shrink: 0; }
-    .oc-check.miss { background: var(--border); }
+    .overview-chore-row .chore-row-name { flex: 1; }
 
-    /* ── HISTORY ── */
+    /* Parent toggle in overview — clickable check */
+    .parent-check { width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(--border); background: white; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem; flex-shrink: 0; cursor: pointer; transition: all 0.15s; }
+    .parent-check.done { background: var(--green); border-color: var(--green); }
+    .parent-check:hover { border-color: var(--amber); }
+    .parent-check.done:hover { background: var(--red); border-color: var(--red); }
+    .parent-check.busy { opacity: 0.5; pointer-events: none; }
+
+    /* HISTORY */
     .history-week { background: var(--warm-white); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 0.85rem; }
     .history-week-header { padding: 0.85rem 1rem; background: var(--cream); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; }
     .history-week-header .hw-title { font-family: 'Fraunces', serif; font-size: 0.95rem; font-weight: 600; color: var(--brown); }
@@ -123,50 +144,46 @@
     .history-week-body.open { display: block; }
     .history-kid-section { margin-bottom: 0.75rem; }
     .history-kid-name { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem; }
-    .history-chore-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; padding: 0.2rem 0; color: var(--text); }
-    .history-chore-row .hc-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
-    .history-chore-row .hc-dot.miss { background: var(--border); }
-    .uncheck-btn { margin-left: auto; padding: 0.2rem 0.5rem; background: transparent; border: 1px solid var(--border); border-radius: 6px; font-size: 0.7rem; color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
-    .uncheck-btn:hover { border-color: var(--red); color: var(--red); background: var(--red-light); }
+    .history-chore-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; padding: 0.25rem 0; color: var(--text); }
+    .hc-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+    .hc-dot.miss { background: var(--border); }
 
-    /* ── MODAL ── */
+    /* MODAL */
     .modal-overlay { position: fixed; inset: 0; background: rgba(45,26,14,0.5); backdrop-filter: blur(4px); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
-    .modal { background: var(--warm-white); border-radius: 20px; padding: 1.75rem; width: 100%; max-width: 380px; box-shadow: 0 20px 60px rgba(45,26,14,0.3); transform: translateY(20px); transition: transform 0.2s; }
+    .modal { background: var(--warm-white); border-radius: 20px; padding: 1.75rem; width: 100%; max-width: 420px; box-shadow: 0 20px 60px rgba(45,26,14,0.3); transform: translateY(20px); transition: transform 0.2s; }
     .modal-overlay.open .modal { transform: translateY(0); }
     .modal h3 { font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 700; color: var(--brown); margin-bottom: 0.5rem; }
     .modal p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.25rem; }
-    .modal-input { width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; background: var(--cream); color: var(--text); outline: none; margin-bottom: 1rem; }
+    .modal-field { margin-bottom: 1rem; }
+    .modal-field label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+    .modal-input { width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; background: var(--cream); color: var(--text); outline: none; }
     .modal-input:focus { border-color: var(--amber); }
-    .modal-btns { display: flex; gap: 0.6rem; }
+    select.modal-input { cursor: pointer; }
+    .modal-btns { display: flex; gap: 0.6rem; margin-top: 1.25rem; }
     .modal-cancel { flex: 1; padding: 0.75rem; background: transparent; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
     .modal-cancel:hover { border-color: var(--brown); color: var(--brown); }
     .modal-confirm { flex: 1; padding: 0.75rem; background: var(--amber); border: none; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; color: white; cursor: pointer; transition: all 0.15s; }
     .modal-confirm:hover { background: var(--brown-mid); }
 
-    /* Avatar colors */
     .av-0{background:#d97c2b}.av-1{background:#4a7c59}.av-2{background:#7c4a8b}
     .av-3{background:#3a6ea8}.av-4{background:#a84a4a}.av-5{background:#4a8ba8}
     .hidden { display: none !important; }
-
     @keyframes slideIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
     .toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--brown); color: white; padding: 0.65rem 1.2rem; border-radius: 100px; font-size: 0.85rem; z-index: 300; transition: transform 0.3s ease; white-space: nowrap; }
     .toast.show { transform: translateX(-50%) translateY(0); }
+    .no-chores-note { font-size: 0.82rem; color: var(--text-muted); padding: 0.5rem 0.25rem; font-style: italic; }
   </style>
 </head>
 <body>
 <div id="app">
-  <!-- LOADING -->
-  <div id="loading-overlay">
-    <div class="spinner"></div>
-    <div class="loading-text">Loading…</div>
-  </div>
+  <div id="loading-overlay"><div class="spinner"></div><div class="loading-text">Loading…</div></div>
 
-  <!-- LOGIN SCREEN -->
+  <!-- LOGIN -->
   <div id="login-screen" class="hidden">
     <div class="login-header">
       <h1>Chore <span>Chart</span></h1>
-      <p>Who's doing chores today?</p>
+      <p>Who's doing chores this weekend?</p>
     </div>
     <div class="login-card">
       <h2>Pick your name</h2>
@@ -200,7 +217,7 @@
           <div class="progress-bar"><div class="progress-fill" id="kid-progress-fill" style="width:0%"></div></div>
         </div>
       </div>
-      <div class="section-title">Your Chores</div>
+      <div class="section-title">Your Chores This Weekend</div>
       <div class="chore-list" id="kid-chore-list"></div>
     </div>
   </div>
@@ -224,6 +241,8 @@
         <button class="admin-tab" data-tab="kids">Kids</button>
         <button class="admin-tab" data-tab="chores">Chores</button>
       </div>
+
+      <!-- OVERVIEW -->
       <div class="admin-section active" id="tab-overview">
         <div class="week-banner" style="margin-bottom:1.5rem;">
           <div><div class="week-label">Current Weekend</div><div class="week-dates" id="parent-week-dates"></div></div>
@@ -231,10 +250,14 @@
         <div class="section-title">Progress by Kid</div>
         <div id="overview-kids-list"></div>
       </div>
+
+      <!-- HISTORY -->
       <div class="admin-section" id="tab-history">
-        <div class="section-title">Completed Weekend History</div>
+        <div class="section-title">Weekend History</div>
         <div id="history-list"></div>
       </div>
+
+      <!-- KIDS -->
       <div class="admin-section" id="tab-kids">
         <div class="section-title">Manage Kids</div>
         <div id="kids-admin-list"></div>
@@ -243,12 +266,22 @@
           <button class="add-btn" id="add-kid-btn">Add Kid</button>
         </div>
       </div>
+
+      <!-- CHORES -->
       <div class="admin-section" id="tab-chores">
         <div class="section-title">Manage Chores</div>
         <div id="chores-admin-list"></div>
         <div class="add-form">
-          <input class="add-input" id="new-chore-input" placeholder="Chore description…" maxlength="60" />
-          <button class="add-btn" id="add-chore-btn">Add Chore</button>
+          <input class="add-input" id="new-chore-input" placeholder="Chore description…" maxlength="60" style="flex:2;min-width:160px;" />
+          <select class="add-input" id="new-chore-kid" style="flex:1.2;">
+            <option value="">Assign to…</option>
+          </select>
+          <select class="add-input" id="new-chore-freq" style="flex:1.2;">
+            <option value="every">Every weekend</option>
+            <option value="biweekly">Every 2nd weekend</option>
+            <option value="monthly">Monthly</option>
+          </select>
+          <button class="add-btn" id="add-chore-btn">Add</button>
         </div>
       </div>
     </div>
@@ -259,11 +292,42 @@
     <div class="modal">
       <h3>Parent Login</h3>
       <p>Enter the parent password to access admin controls.</p>
-      <input class="modal-input" type="password" id="parent-pw-input" placeholder="Password…" />
-      <div id="parent-pw-error" class="hidden" style="font-size:.8rem;color:var(--red);margin-bottom:.75rem;">Incorrect password.</div>
+      <div class="modal-field">
+        <input class="modal-input" type="password" id="parent-pw-input" placeholder="Password…" />
+      </div>
+      <div id="parent-pw-error" class="hidden" style="font-size:.8rem;color:var(--red);margin-top:-0.5rem;margin-bottom:0.5rem;">Incorrect password.</div>
       <div class="modal-btns">
         <button class="modal-cancel" id="parent-modal-cancel">Cancel</button>
         <button class="modal-confirm" id="parent-modal-confirm">Log In</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHORE EDIT MODAL -->
+  <div class="modal-overlay" id="chore-modal">
+    <div class="modal">
+      <h3 id="chore-modal-title">Edit Chore</h3>
+      <div class="modal-field">
+        <label>Chore Name</label>
+        <input class="modal-input" id="chore-edit-name" placeholder="e.g. Take out trash" maxlength="60" />
+      </div>
+      <div class="modal-field">
+        <label>Assigned To</label>
+        <select class="modal-input" id="chore-edit-kid">
+          <option value="">Unassigned</option>
+        </select>
+      </div>
+      <div class="modal-field">
+        <label>Frequency</label>
+        <select class="modal-input" id="chore-edit-freq">
+          <option value="every">Every weekend</option>
+          <option value="biweekly">Every 2nd weekend</option>
+          <option value="monthly">Monthly (1st weekend)</option>
+        </select>
+      </div>
+      <div class="modal-btns">
+        <button class="modal-cancel" id="chore-modal-cancel">Cancel</button>
+        <button class="modal-confirm" id="chore-modal-save">Save</button>
       </div>
     </div>
   </div>
@@ -272,41 +336,61 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ── CONFIG ── Replace with your deployed Worker URL
 const API = 'https://chore-chart-api.kardian.workers.dev';
 
-// ── STATE ──
 let kids = [], chores = [], parentToken = null, currentUser = null;
 
-// ── UTILS ──
-function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function kidColor(idx) { return `av-${(idx||0)%6}`; }
+// ── UTILS ────────────────────────────────────────────────────────────────────
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function kidColor(idx) { return `av-${(idx == null ? 0 : idx) % 6}`; }
 function initials(name) { return name.slice(0,2).toUpperCase(); }
+
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2200);
+  setTimeout(() => t.classList.remove('show'), 2400);
 }
 function hideLoading() { document.getElementById('loading-overlay').classList.add('hidden'); }
 function showLoading() { document.getElementById('loading-overlay').classList.remove('hidden'); }
 
+// Weekend anchors to Friday
 function getWeekendKey() {
-  const d = new Date(), day = d.getDay();
-  const sat = new Date(d);
-  if (day === 0) sat.setDate(d.getDate() - 1);
-  else sat.setDate(d.getDate() + (6 - day));
-  return sat.toISOString().slice(0,10);
-}
-function formatWeekend(satKey) {
-  const sat = new Date(satKey + 'T12:00:00');
-  const sun = new Date(sat); sun.setDate(sat.getDate()+1);
-  const o = {month:'short',day:'numeric'};
-  return `${sat.toLocaleDateString('en-US',o)} – ${sun.toLocaleDateString('en-US',o)}`;
+  const d = new Date();
+  const day = d.getDay(); // 0=Sun,1=Mon,...,5=Fri,6=Sat
+  const fri = new Date(d);
+  if (day === 5) { /* today is Friday */ }
+  else if (day === 6) fri.setDate(d.getDate() - 1);
+  else if (day === 0) fri.setDate(d.getDate() - 2);
+  else fri.setDate(d.getDate() + (5 - day)); // Mon–Thu → next Friday
+  return fri.toISOString().slice(0, 10);
 }
 
-// ── API ──
+function formatWeekend(friKey) {
+  const fri = new Date(friKey + 'T12:00:00');
+  const sun = new Date(fri);
+  sun.setDate(fri.getDate() + 2);
+  const o = { month: 'short', day: 'numeric' };
+  return `${fri.toLocaleDateString('en-US', o)} – ${sun.toLocaleDateString('en-US', o)}`;
+}
+
+function freqLabel(f) {
+  return { every: 'Every weekend', biweekly: 'Every 2nd weekend', monthly: 'Monthly' }[f] || f;
+}
+
+function freqBadge(f) {
+  return `<span class="freq-badge freq-${f}">${freqLabel(f)}</span>`;
+}
+
+function kidName(kidId) {
+  const k = kids.find(k => k.id === kidId);
+  return k ? k.name : 'Unassigned';
+}
+
+// ── API ──────────────────────────────────────────────────────────────────────
+
 async function apiFetch(path, opts = {}) {
-  const headers = { 'Content-Type': 'application/json', ...(opts.headers||{}) };
+  const headers = { 'Content-Type': 'application/json', ...(opts.headers || {}) };
   if (parentToken) headers['Authorization'] = `Bearer ${parentToken}`;
   const res = await fetch(API + path, { ...opts, headers });
   if (!res.ok) {
@@ -320,21 +404,23 @@ async function loadKidsAndChores() {
   [kids, chores] = await Promise.all([apiFetch('/api/kids'), apiFetch('/api/chores')]);
 }
 
-// ── SCREENS ──
+// ── SCREENS ──────────────────────────────────────────────────────────────────
+
 function showScreen(name) {
-  ['login-screen','kid-view','parent-view'].forEach(id =>
+  ['login-screen', 'kid-view', 'parent-view'].forEach(id =>
     document.getElementById(id).classList.add('hidden'));
   document.getElementById(name).classList.remove('hidden');
 }
 
-// ── LOGIN ──
-async function renderLogin() {
+// ── LOGIN ────────────────────────────────────────────────────────────────────
+
+function renderLogin() {
   const grid = document.getElementById('kid-grid');
   const noKids = document.getElementById('no-kids-msg');
   grid.innerHTML = '';
   if (kids.length === 0) { noKids.classList.remove('hidden'); return; }
   noKids.classList.add('hidden');
-  kids.forEach((kid, idx) => {
+  kids.forEach(kid => {
     const btn = document.createElement('button');
     btn.className = 'kid-btn';
     btn.innerHTML = `<div class="avatar ${kidColor(kid.color_idx)}">${initials(kid.name)}</div><div class="name">${esc(kid.name)}</div>`;
@@ -352,7 +438,8 @@ async function loginKid(kid) {
   await renderKidView();
 }
 
-// ── KID VIEW ──
+// ── KID VIEW ─────────────────────────────────────────────────────────────────
+
 async function renderKidView() {
   const weekKey = getWeekendKey();
   document.getElementById('kid-week-dates').textContent = formatWeekend(weekKey);
@@ -367,23 +454,33 @@ async function renderKidView() {
 function renderKidChores(kidData) {
   const list = document.getElementById('kid-chore-list');
   list.innerHTML = '';
-  if (chores.length === 0) {
-    list.innerHTML = `<div class="empty-state"><div class="icon">🌟</div><p>No chores assigned yet!</p></div>`;
-    updateKidProgress(0,0); return;
+
+  // Only chores assigned to this kid (frequency filtering happens server-side)
+  const myChores = chores.filter(c => c.kid_id === currentUser.id);
+
+  if (myChores.length === 0) {
+    list.innerHTML = `<div class="empty-state"><div class="icon">🌟</div><p>No chores assigned to you yet!</p></div>`;
+    updateKidProgress(0, 0); return;
   }
+
   let done = 0;
-  chores.forEach((chore, i) => {
+  myChores.forEach((chore, i) => {
     const completed = !!kidData[chore.id];
     if (completed) done++;
     const item = document.createElement('div');
-    item.className = `chore-item${completed?' completed':''}`;
-    item.style.animationDelay = `${i*0.04}s`;
+    item.className = `chore-item${completed ? ' completed' : ''}`;
+    item.style.animationDelay = `${i * 0.04}s`;
     item.dataset.choreId = chore.id;
-    item.innerHTML = `<div class="chore-check">${completed?'✓':''}</div><div class="chore-info"><div class="chore-name">${esc(chore.name)}</div></div>`;
+    item.innerHTML = `
+      <div class="chore-check">${completed ? '✓' : ''}</div>
+      <div class="chore-info">
+        <div class="chore-name">${esc(chore.name)}</div>
+        <div class="chore-freq">${freqLabel(chore.frequency || 'every')}</div>
+      </div>`;
     item.addEventListener('click', () => toggleChore(chore.id, item));
     list.appendChild(item);
   });
-  updateKidProgress(done, chores.length);
+  updateKidProgress(done, myChores.length);
 }
 
 async function toggleChore(choreId, itemEl) {
@@ -401,26 +498,27 @@ async function toggleChore(choreId, itemEl) {
     }
     const allItems = document.querySelectorAll('#kid-chore-list .chore-item');
     const done = [...allItems].filter(el => el.classList.contains('completed')).length;
-    updateKidProgress(done, chores.length);
+    updateKidProgress(done, allItems.length);
   } catch(e) { showToast('Error saving'); }
   finally { itemEl.classList.remove('loading-item'); }
 }
 
 function updateKidProgress(done, total) {
   document.getElementById('kid-progress-text').textContent = `${done} / ${total} done`;
-  const pct = total > 0 ? Math.round((done/total)*100) : 0;
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
   document.getElementById('kid-progress-fill').style.width = pct + '%';
 }
 
-// ── PARENT VIEW ──
+// ── PARENT VIEW ───────────────────────────────────────────────────────────────
+
 async function renderParentView() {
   const weekKey = getWeekendKey();
   document.getElementById('parent-week-dates').textContent = formatWeekend(weekKey);
   showLoading();
-  try {
-    await renderOverview();
-  } finally { hideLoading(); }
+  try { await renderOverview(); } finally { hideLoading(); }
 }
+
+// ── OVERVIEW ─────────────────────────────────────────────────────────────────
 
 async function renderOverview() {
   const weekKey = getWeekendKey();
@@ -429,46 +527,76 @@ async function renderOverview() {
   try {
     const compMap = await apiFetch(`/api/completions/${weekKey}`);
     container.innerHTML = '';
+
     if (kids.length === 0) {
-      container.innerHTML = `<div class="empty-state"><div class="icon">👶</div><p>No kids added yet.</p></div>`; return;
+      container.innerHTML = `<div class="empty-state"><div class="icon">👶</div><p>No kids added yet. Go to the Kids tab.</p></div>`; return;
     }
+
     kids.forEach(kid => {
+      // Chores assigned to this kid that are due this weekend
+      // The server already filtered by due date in compMap; but we show all assigned chores
+      // and mark them from compMap. Chores not in compMap = not yet interacted with = false.
+      const assignedChores = chores.filter(c => c.kid_id === kid.id);
       const kidData = compMap[kid.id] || {};
-      const done = chores.filter(c => kidData[c.id]).length;
-      const total = chores.length;
-      const pct = total > 0 ? Math.round((done/total)*100) : 0;
+      const done = assignedChores.filter(c => kidData[c.id]).length;
+      const total = assignedChores.length;
+      const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+
       const card = document.createElement('div');
       card.className = 'overview-kid-card';
-      const rows = chores.map(chore => {
-        const c = !!kidData[chore.id];
-        return `<div class="overview-chore-row">
-          <div class="oc-check ${c?'':'miss'}">${c?'✓':''}</div>
-          <span>${esc(chore.name)}</span>
-          ${c?`<button class="uncheck-btn" data-week="${weekKey}" data-kid="${kid.id}" data-chore="${chore.id}">Uncheck</button>`:''}
-        </div>`;
-      }).join('');
+
+      const rows = assignedChores.length === 0
+        ? `<div class="no-chores-note">No chores assigned to ${esc(kid.name)} yet.</div>`
+        : assignedChores.map(chore => {
+            const completed = !!kidData[chore.id];
+            return `<div class="overview-chore-row" data-kid="${kid.id}" data-chore="${chore.id}">
+              <div class="parent-check ${completed ? 'done' : ''}" title="${completed ? 'Click to uncheck' : 'Click to check'}">${completed ? '✓' : ''}</div>
+              <span class="chore-row-name">${esc(chore.name)}</span>
+              ${freqBadge(chore.frequency || 'every')}
+            </div>`;
+          }).join('');
+
       card.innerHTML = `
         <div class="overview-kid-header">
           <div class="mini-avatar ${kidColor(kid.color_idx)}" style="width:36px;height:36px;font-size:.9rem;">${initials(kid.name)}</div>
-          <div class="kid-info"><div class="kid-name-lg">${esc(kid.name)}</div><div class="kid-progress-text">${done} of ${total} chores done</div></div>
-          <div><div class="mini-progress-bar" style="width:80px;"><div class="mini-progress-fill" style="width:${pct}%;background:${pct===100?'var(--green)':'var(--amber)'}"></div></div></div>
+          <div class="kid-info">
+            <div class="kid-name-lg">${esc(kid.name)}</div>
+            <div class="kid-progress-text">${done} of ${total} chores done</div>
+          </div>
+          <div><div class="mini-progress-bar" style="width:80px;">
+            <div class="mini-progress-fill" style="width:${pct}%;background:${pct===100?'var(--green)':'var(--amber)'}"></div>
+          </div></div>
         </div>
-        <div class="overview-chore-list">${rows||'<div style="padding:.5rem;font-size:.85rem;color:var(--text-muted)">No chores defined.</div>'}</div>`;
+        <div class="overview-chore-list">${rows}</div>`;
+
       container.appendChild(card);
     });
-    container.querySelectorAll('.uncheck-btn').forEach(btn => {
+
+    // Wire up parent check toggles
+    container.querySelectorAll('.parent-check').forEach(btn => {
       btn.addEventListener('click', async () => {
-        btn.disabled = true;
+        const row = btn.closest('.overview-chore-row');
+        const kid_id = row.dataset.kid;
+        const chore_id = row.dataset.chore;
+        const isNowDone = !btn.classList.contains('done');
+        btn.classList.add('busy');
         try {
-          await apiFetch(`/api/completions/${btn.dataset.week}/uncheck`, {
-            method:'POST', body: JSON.stringify({ kid_id: btn.dataset.kid, chore_id: btn.dataset.chore })
+          await apiFetch(`/api/completions/${weekKey}/set`, {
+            method: 'POST',
+            body: JSON.stringify({ kid_id, chore_id, completed: isNowDone })
           });
-          showToast('Task unchecked'); renderOverview();
-        } catch(e) { showToast('Error'); btn.disabled = false; }
+          showToast(isNowDone ? '✓ Marked complete' : 'Unchecked');
+          await renderOverview();
+        } catch(e) { showToast('Error'); btn.classList.remove('busy'); }
       });
     });
-  } catch(e) { container.innerHTML = `<div class="empty-state"><p>Error loading data.</p></div>`; }
+
+  } catch(e) {
+    container.innerHTML = `<div class="empty-state"><p>Error loading data.</p></div>`;
+  }
 }
+
+// ── HISTORY ───────────────────────────────────────────────────────────────────
 
 async function renderHistory() {
   const container = document.getElementById('history-list');
@@ -480,78 +608,154 @@ async function renderHistory() {
       container.innerHTML = `<div class="empty-state"><div class="icon">📋</div><p>No history yet!</p></div>`; return;
     }
     history.forEach(week => {
-      const totalDone = week.kids.reduce((a,k) => a + k.chores.filter(c=>c.completed).length, 0);
-      const totalPossible = week.kids.length * week.kids[0]?.chores.length || 0;
+      let totalDone = 0, totalPossible = 0;
+      week.kids.forEach(k => {
+        totalDone += k.chores.filter(c => c.completed).length;
+        totalPossible += k.chores.length;
+      });
       const block = document.createElement('div'); block.className = 'history-week';
       const header = document.createElement('div'); header.className = 'history-week-header';
-      header.innerHTML = `<div class="hw-title">${formatWeekend(week.week_key)}</div><div class="hw-badge">${totalDone}/${totalPossible} completed</div>`;
+      header.innerHTML = `<div class="hw-title">${formatWeekend(week.week_key)}</div><div class="hw-badge">${totalDone}/${totalPossible} completed ▾</div>`;
       const body = document.createElement('div'); body.className = 'history-week-body';
-      week.kids.forEach((kid, idx) => {
+
+      week.kids.forEach(kid => {
+        if (kid.chores.length === 0) return;
         const sec = document.createElement('div'); sec.className = 'history-kid-section';
-        sec.innerHTML = `<div class="history-kid-name"><div class="mini-avatar ${kidColor(kid.color_idx)}" style="width:18px;height:18px;font-size:.55rem;">${initials(kid.name)}</div>${esc(kid.name)}</div>`;
+        sec.innerHTML = `<div class="history-kid-name">
+          <div class="mini-avatar ${kidColor(kid.color_idx)}" style="width:18px;height:18px;font-size:.55rem;">${initials(kid.name)}</div>
+          ${esc(kid.name)}
+        </div>`;
         kid.chores.forEach(chore => {
           const row = document.createElement('div'); row.className = 'history-chore-row';
-          row.innerHTML = `<div class="hc-dot ${chore.completed?'':'miss'}"></div><span>${esc(chore.name)}</span>${chore.completed?`<button class="uncheck-btn" data-week="${week.week_key}" data-kid="${kid.id}" data-chore="${chore.id}">Uncheck</button>`:''}`;
+          row.innerHTML = `<div class="hc-dot ${chore.completed ? '' : 'miss'}"></div><span>${esc(chore.name)}</span>`;
           sec.appendChild(row);
         });
         body.appendChild(sec);
       });
+
       header.addEventListener('click', () => body.classList.toggle('open'));
       block.appendChild(header); block.appendChild(body); container.appendChild(block);
     });
-    container.querySelectorAll('.uncheck-btn').forEach(btn => {
-      btn.addEventListener('click', async (e) => {
-        e.stopPropagation(); btn.disabled = true;
-        try {
-          await apiFetch(`/api/completions/${btn.dataset.week}/uncheck`, {
-            method:'POST', body: JSON.stringify({ kid_id: btn.dataset.kid, chore_id: btn.dataset.chore })
-          });
-          showToast('Task unchecked'); renderHistory();
-        } catch(e) { showToast('Error'); btn.disabled = false; }
-      });
-    });
-  } catch(e) { container.innerHTML = `<div class="empty-state"><p>Error loading history.</p></div>`; }
+  } catch(e) {
+    container.innerHTML = `<div class="empty-state"><p>Error loading history.</p></div>`;
+  }
 }
+
+// ── KIDS ADMIN ────────────────────────────────────────────────────────────────
 
 function renderKidsAdmin() {
   const list = document.getElementById('kids-admin-list');
   list.innerHTML = '';
-  if (kids.length === 0) { list.innerHTML = `<div style="color:var(--text-muted);font-size:.9rem;padding:.5rem 0;">No kids yet.</div>`; return; }
+  if (kids.length === 0) {
+    list.innerHTML = `<div style="color:var(--text-muted);font-size:.9rem;padding:.5rem 0;">No kids yet.</div>`; return;
+  }
   kids.forEach(kid => {
     const row = document.createElement('div'); row.className = 'item-row';
-    row.innerHTML = `<div class="item-label"><div class="mini-avatar ${kidColor(kid.color_idx)}" style="width:28px;height:28px;font-size:.7rem;">${initials(kid.name)}</div>${esc(kid.name)}</div><button class="delete-btn">✕</button>`;
-    row.querySelector('.delete-btn').addEventListener('click', async () => {
-      if (!confirm(`Remove ${kid.name}?`)) return;
+    row.innerHTML = `
+      <div class="item-label">
+        <div class="mini-avatar ${kidColor(kid.color_idx)}" style="width:28px;height:28px;font-size:.7rem;">${initials(kid.name)}</div>
+        ${esc(kid.name)}
+      </div>
+      <div class="item-actions">
+        <button class="icon-btn delete" title="Remove">✕</button>
+      </div>`;
+    row.querySelector('.delete').addEventListener('click', async () => {
+      if (!confirm(`Remove ${kid.name}? Their chore history will be kept.`)) return;
       try {
         await apiFetch(`/api/kids/${kid.id}`, { method: 'DELETE' });
         kids = kids.filter(k => k.id !== kid.id);
-        renderKidsAdmin(); renderLogin(); showToast(`${kid.name} removed`);
+        renderKidsAdmin(); renderLogin(); populateKidSelects();
+        showToast(`${kid.name} removed`);
       } catch(e) { showToast('Error removing'); }
     });
     list.appendChild(row);
   });
 }
+
+// ── CHORES ADMIN ──────────────────────────────────────────────────────────────
 
 function renderChoresAdmin() {
   const list = document.getElementById('chores-admin-list');
   list.innerHTML = '';
-  if (chores.length === 0) { list.innerHTML = `<div style="color:var(--text-muted);font-size:.9rem;padding:.5rem 0;">No chores yet.</div>`; return; }
-  chores.forEach(chore => {
-    const row = document.createElement('div'); row.className = 'item-row';
-    row.innerHTML = `<div class="item-label">📋 ${esc(chore.name)}</div><button class="delete-btn">✕</button>`;
-    row.querySelector('.delete-btn').addEventListener('click', async () => {
-      if (!confirm(`Remove chore: "${chore.name}"?`)) return;
-      try {
-        await apiFetch(`/api/chores/${chore.id}`, { method: 'DELETE' });
-        chores = chores.filter(c => c.id !== chore.id);
-        renderChoresAdmin(); showToast('Chore removed');
-      } catch(e) { showToast('Error removing'); }
+  if (chores.length === 0) {
+    list.innerHTML = `<div style="color:var(--text-muted);font-size:.9rem;padding:.5rem 0;">No chores yet.</div>`; return;
+  }
+
+  // Group by kid
+  const byKid = {};
+  chores.forEach(c => {
+    const key = c.kid_id || '__unassigned__';
+    if (!byKid[key]) byKid[key] = [];
+    byKid[key].push(c);
+  });
+
+  // Show assigned kids first, then unassigned
+  const orderedKeys = [
+    ...kids.map(k => k.id).filter(id => byKid[id]),
+    ...(byKid['__unassigned__'] ? ['__unassigned__'] : [])
+  ];
+
+  orderedKeys.forEach(key => {
+    const kidObj = kids.find(k => k.id === key);
+    const label = document.createElement('div');
+    label.style.cssText = 'font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:0.85rem 0 0.4rem;';
+    label.textContent = kidObj ? kidObj.name : 'Unassigned';
+    list.appendChild(label);
+
+    byKid[key].forEach(chore => {
+      const row = document.createElement('div'); row.className = 'item-row';
+      row.innerHTML = `
+        <div class="item-label" style="flex-direction:column;align-items:flex-start;gap:0.2rem;">
+          <span>${esc(chore.name)}</span>
+          <div>${freqBadge(chore.frequency || 'every')}</div>
+        </div>
+        <div class="item-actions">
+          <button class="icon-btn edit" title="Edit">✎</button>
+          <button class="icon-btn delete" title="Remove">✕</button>
+        </div>`;
+      row.querySelector('.edit').addEventListener('click', () => openChoreModal(chore));
+      row.querySelector('.delete').addEventListener('click', async () => {
+        if (!confirm(`Remove chore: "${chore.name}"?`)) return;
+        try {
+          await apiFetch(`/api/chores/${chore.id}`, { method: 'DELETE' });
+          chores = chores.filter(c => c.id !== chore.id);
+          renderChoresAdmin(); showToast('Chore removed');
+        } catch(e) { showToast('Error removing'); }
+      });
+      list.appendChild(row);
     });
-    list.appendChild(row);
   });
 }
 
-// ── TABS ──
+// ── CHORE MODAL ───────────────────────────────────────────────────────────────
+
+let editingChoreId = null;
+
+function openChoreModal(chore) {
+  editingChoreId = chore ? chore.id : null;
+  document.getElementById('chore-modal-title').textContent = chore ? 'Edit Chore' : 'Add Chore';
+  document.getElementById('chore-edit-name').value = chore ? chore.name : '';
+  document.getElementById('chore-edit-kid').value = chore ? (chore.kid_id || '') : '';
+  document.getElementById('chore-edit-freq').value = chore ? (chore.frequency || 'every') : 'every';
+  document.getElementById('chore-modal').classList.add('open');
+  setTimeout(() => document.getElementById('chore-edit-name').focus(), 100);
+}
+
+function closeChoreModal() {
+  document.getElementById('chore-modal').classList.remove('open');
+  editingChoreId = null;
+}
+
+// ── KID SELECTS ───────────────────────────────────────────────────────────────
+
+function populateKidSelects() {
+  const opts = kids.map(k => `<option value="${k.id}">${esc(k.name)}</option>`).join('');
+  document.getElementById('new-chore-kid').innerHTML = `<option value="">Assign to…</option>${opts}`;
+  document.getElementById('chore-edit-kid').innerHTML = `<option value="">Unassigned</option>${opts}`;
+}
+
+// ── TABS ──────────────────────────────────────────────────────────────────────
+
 function initTabs() {
   document.querySelectorAll('.admin-tab').forEach(tab => {
     tab.addEventListener('click', async () => {
@@ -559,15 +763,16 @@ function initTabs() {
       document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
       tab.classList.add('active');
       document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
-      if (tab.dataset.tab === 'history') await renderHistory();
       if (tab.dataset.tab === 'overview') await renderOverview();
+      if (tab.dataset.tab === 'history') await renderHistory();
       if (tab.dataset.tab === 'kids') renderKidsAdmin();
       if (tab.dataset.tab === 'chores') renderChoresAdmin();
     });
   });
 }
 
-// ── INIT ──
+// ── INIT ──────────────────────────────────────────────────────────────────────
+
 async function init() {
   showLoading();
   try {
@@ -575,12 +780,12 @@ async function init() {
     renderLogin();
     showScreen('login-screen');
   } catch(e) {
-    document.getElementById('loading-overlay').innerHTML = `<div style="color:var(--red);font-family:'Fraunces',serif;font-size:1.1rem;padding:2rem;text-align:center;">⚠️ Could not connect to server.<br><small style="font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--text-muted)">Check that the API_URL in the HTML is correct.</small></div>`;
+    document.getElementById('loading-overlay').innerHTML = `<div style="color:var(--red);font-family:'Fraunces',serif;font-size:1.1rem;padding:2rem;text-align:center;">⚠️ Could not connect to server.<br><small style="font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--text-muted)">Check that the API URL in the HTML is correct.</small></div>`;
     return;
   }
   hideLoading();
 
-  // Parent login
+  // Parent login modal
   document.getElementById('parent-login-btn').addEventListener('click', () => {
     document.getElementById('parent-pw-input').value = '';
     document.getElementById('parent-pw-error').classList.add('hidden');
@@ -596,10 +801,11 @@ async function init() {
   document.getElementById('parent-modal-confirm').addEventListener('click', async () => {
     const pw = document.getElementById('parent-pw-input').value;
     try {
-      const { token } = await apiFetch('/api/auth/parent', { method:'POST', body: JSON.stringify({ password: pw }) });
+      const { token } = await apiFetch('/api/auth/parent', { method: 'POST', body: JSON.stringify({ password: pw }) });
       parentToken = token;
       document.getElementById('parent-modal').classList.remove('open');
       currentUser = { type: 'parent' };
+      populateKidSelects();
       showScreen('parent-view');
       await renderParentView();
       renderKidsAdmin(); renderChoresAdmin();
@@ -623,27 +829,60 @@ async function init() {
     const name = input.value.trim(); if (!name) return;
     const btn = document.getElementById('add-kid-btn'); btn.disabled = true;
     try {
-      const kid = await apiFetch('/api/kids', { method:'POST', body: JSON.stringify({ name }) });
+      const kid = await apiFetch('/api/kids', { method: 'POST', body: JSON.stringify({ name }) });
       kids.push(kid); input.value = '';
-      renderKidsAdmin(); renderLogin(); showToast(`${kid.name} added! 🎉`);
+      renderKidsAdmin(); renderLogin(); populateKidSelects();
+      showToast(`${kid.name} added! 🎉`);
     } catch(e) { showToast(e.message || 'Error adding kid'); }
     finally { btn.disabled = false; }
   });
-  document.getElementById('new-kid-input').addEventListener('keydown', e => { if (e.key==='Enter') document.getElementById('add-kid-btn').click(); });
+  document.getElementById('new-kid-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('add-kid-btn').click();
+  });
 
-  // Add chore
+  // Add chore (inline form)
   document.getElementById('add-chore-btn').addEventListener('click', async () => {
-    const input = document.getElementById('new-chore-input');
-    const name = input.value.trim(); if (!name) return;
+    const nameInput = document.getElementById('new-chore-input');
+    const name = nameInput.value.trim(); if (!name) return;
+    const kid_id = document.getElementById('new-chore-kid').value || null;
+    const frequency = document.getElementById('new-chore-freq').value;
     const btn = document.getElementById('add-chore-btn'); btn.disabled = true;
     try {
-      const chore = await apiFetch('/api/chores', { method:'POST', body: JSON.stringify({ name }) });
-      chores.push(chore); input.value = '';
+      const chore = await apiFetch('/api/chores', { method: 'POST', body: JSON.stringify({ name, kid_id, frequency }) });
+      chores.push(chore); nameInput.value = '';
       renderChoresAdmin(); showToast('Chore added!');
     } catch(e) { showToast(e.message || 'Error adding chore'); }
     finally { btn.disabled = false; }
   });
-  document.getElementById('new-chore-input').addEventListener('keydown', e => { if (e.key==='Enter') document.getElementById('add-chore-btn').click(); });
+  document.getElementById('new-chore-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('add-chore-btn').click();
+  });
+
+  // Chore modal — save
+  document.getElementById('chore-modal-save').addEventListener('click', async () => {
+    const name = document.getElementById('chore-edit-name').value.trim();
+    const kid_id = document.getElementById('chore-edit-kid').value || null;
+    const frequency = document.getElementById('chore-edit-freq').value;
+    if (!name) { showToast('Name required'); return; }
+    const btn = document.getElementById('chore-modal-save'); btn.disabled = true;
+    try {
+      if (editingChoreId) {
+        const updated = await apiFetch(`/api/chores/${editingChoreId}`, {
+          method: 'PUT', body: JSON.stringify({ name, kid_id, frequency })
+        });
+        const idx = chores.findIndex(c => c.id === editingChoreId);
+        if (idx !== -1) chores[idx] = updated;
+        showToast('Chore updated!');
+      }
+      closeChoreModal();
+      renderChoresAdmin();
+    } catch(e) { showToast(e.message || 'Error saving chore'); }
+    finally { btn.disabled = false; }
+  });
+  document.getElementById('chore-modal-cancel').addEventListener('click', closeChoreModal);
+  document.getElementById('chore-modal').addEventListener('click', e => {
+    if (e.target === document.getElementById('chore-modal')) closeChoreModal();
+  });
 
   initTabs();
 }
